@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="documentation_srf" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css">
+  <link rel="stylesheet" href="./app.css">
+  </head>
+<body ng-controller="TemplatesCtrl" layout="column" style="height:500px;" ng-cloak>
+
+<section layout="row" flex>
+
+  <md-sidenav
+          class="md-sidenav-left"
+          md-component-id="left"
+          md-is-locked-open="$mdMedia('gt-md')"
+          md-whiteframe="4">
+
+    <md-toolbar class="md-theme-indigo">
+      <h1 class="md-toolbar-tools">SRF DOCUMENTATION</h1>
+    </md-toolbar>
+
+    <md-content layout-padding ng-controller="LeftCtrl">
+
+
+      <div ng-repeat="subject in sidebarSubjectsArray">
+        <h3>{{subject.key}}</h3>
+        <md-list flex>
+          <md-list-item class="md-12-line" ng-repeat="sub in subject.value">
+            <a ng-href="{{sub.value}}"><h6>{{sub.key}}</h6></a>
+          </md-list-item>
+        </md-list>
+      </div>
+
+
+    </md-content>
+
+
+
+  </md-sidenav>
+
+  <md-content flex layout-padding>
+        <div layout="column" layout-align="top center">
+          <div ng-view></div>
+        <div>
+          <md-button ng-click="toggleLeft()"
+                     class="md-primary" hide-gt-md>
+            Toggle left
+          </md-button>
+        </div>
+
+    </div>
+
+    <div flex></div>
+
+  </md-content>
+
+  <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+
+    <md-toolbar class="md-theme-light">
+      <h1 class="md-toolbar-tools">Sidenav Right</h1>
+    </md-toolbar>
+
+  </md-sidenav>
+
+</section>
+
+  <script src="./bower_components/angular/angular.js"></script>
+  <script src="./bower_components/angular-route/angular-route.js"></script>
+  <script src="./bower_components/angular-animate/angular-animate.js"></script>
+  <script src="./bower_components/angular-aria/angular-aria.js"></script>
+  <script src="./bower_components/angular-messages/angular-messages.js"></script>
+  <script src="./bower_components/angular-material/angular-material.js"></script>
+  <script src="./app.js"></script>
+  <script src="./templates/templates.js"></script>
+</body>
+</html>
